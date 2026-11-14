@@ -46,6 +46,17 @@ const SITE = {
     document.head.appendChild(s);
   }
 
+  // "Request a school offer": opens an email to you when a contact address is set
+  document.querySelectorAll('[data-school]').forEach((a) => {
+    if (SITE.contactEmail) {
+      a.href = `mailto:${SITE.contactEmail}?subject=${encodeURIComponent('School offer: Expresso Charts')}&body=${encodeURIComponent('School / team name:\nNumber of seats:\nMonthly or yearly billing:\n')}`;
+    } else {
+      a.removeAttribute('href');
+      a.classList.add('disabled');
+      a.textContent = 'Offers coming soon';
+    }
+  });
+
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
