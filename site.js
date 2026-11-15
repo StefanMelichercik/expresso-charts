@@ -17,7 +17,9 @@ const SITE = {
 /* ========================================================= */
 
 (function () {
-  const pending = '<span class="todo">(to be added)</span>';
+  const FR = document.documentElement.lang === 'fr';
+  const L = (en, fr) => (FR ? fr : en);
+  const pending = `<span class="todo">${L('(to be added)', '(à compléter)')}</span>`;
   document.querySelectorAll('[data-fill]').forEach((el) => {
     const v = SITE[el.dataset.fill];
     if (el.dataset.fill === 'contactEmail' && v) el.innerHTML = `<a href="mailto:${v}">${v}</a>`;
@@ -35,7 +37,7 @@ const SITE = {
     } else {
       a.removeAttribute('href');
       a.classList.add('disabled');
-      a.textContent = 'Coming soon';
+      a.textContent = L('Coming soon', 'Bientôt disponible');
       a.setAttribute('aria-disabled', 'true');
     }
   });
@@ -49,11 +51,11 @@ const SITE = {
   // "Request a school offer": opens an email to you when a contact address is set
   document.querySelectorAll('[data-school]').forEach((a) => {
     if (SITE.contactEmail) {
-      a.href = `mailto:${SITE.contactEmail}?subject=${encodeURIComponent('School offer: Expresso Charts')}&body=${encodeURIComponent('School / team name:\nNumber of seats:\nMonthly or yearly billing:\n')}`;
+      a.href = `mailto:${SITE.contactEmail}?subject=${encodeURIComponent(L('School offer: Expresso Charts', 'Offre école : Expresso Charts'))}&body=${encodeURIComponent(L('School / team name:\nNumber of seats:\nMonthly or yearly billing:\n', 'Nom de l’école ou de l’équipe :\nNombre de places :\nFacturation mensuelle ou annuelle :\n'))}`;
     } else {
       a.removeAttribute('href');
       a.classList.add('disabled');
-      a.textContent = 'Offers coming soon';
+      a.textContent = L('Offers coming soon', 'Offres bientôt disponibles');
     }
   });
 
