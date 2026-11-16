@@ -3,7 +3,7 @@ const SITE = {
   // Your seller details (shown on the legal pages and in the footer). Leave '' until ready.
   sellerName: '',          // e.g. 'Stefan M.' or your registered trade name
   sellerAddress: '',       // e.g. 'City, Country' (some countries require a full address)
-  contactEmail: '',        // e.g. 'support@expressocharts.com'
+  contactEmail: 'support@expressocharts.com', // e.g. 'support@expressocharts.com'
 
   // Lemon Squeezy checkout links (Store → Products → Share). Leave '' to show "Coming soon".
   checkout: {
