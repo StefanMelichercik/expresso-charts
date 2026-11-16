@@ -1,8 +1,9 @@
 /* ===== Site settings: edit these, then publish again ===== */
 const SITE = {
   // Your seller details (shown on the legal pages and in the footer). Leave '' until ready.
-  sellerName: 'Štefan Melicherčík', // e.g. 'Stefan M.' or your registered trade name
-  sellerAddress: '974 11 Banská Bystrica, Slovakia', // e.g. 'City, Country' (some countries require a full address)
+  sellerName: 'SM Gastro s.r.o.', // registered company name
+  sellerAddress: 'Magurská 6439/8, 974 11 Banská Bystrica, Slovakia', // registered office
+  sellerIds: 'IČO: 55115951, DIČ: 2121869244, IČ DPH: SK2121869244', // company IDs (+ register entry when known)
   contactEmail: 'support@expressocharts.com', // e.g. 'support@expressocharts.com'
 
   // Lemon Squeezy checkout links (Store → Products → Share). Leave '' to show "Coming soon".
