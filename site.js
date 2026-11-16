@@ -49,15 +49,44 @@ const SITE = {
     document.head.appendChild(s);
   }
 
-  // "Request a school offer": opens an email to you when a contact address is set
+  // "Request a school offer": shows the address with Copy / Gmail / email app options
+  // (a plain mailto: link does nothing on PCs without a desktop email app)
   document.querySelectorAll('[data-school]').forEach((a) => {
-    if (SITE.contactEmail) {
-      a.href = `mailto:${SITE.contactEmail}?subject=${encodeURIComponent(L('School offer: Expresso Charts', 'Offre école : Expresso Charts'))}&body=${encodeURIComponent(L('School / team name:\nNumber of seats:\nMonthly or yearly billing:\n', 'Nom de l’école ou de l’équipe :\nNombre de places :\nFacturation mensuelle ou annuelle :\n'))}`;
-    } else {
+    if (!SITE.contactEmail) {
       a.removeAttribute('href');
       a.classList.add('disabled');
       a.textContent = L('Offers coming soon', 'Offres bientôt disponibles');
+      return;
     }
+    const subject = L('School offer: Expresso Charts', 'Offre école : Expresso Charts');
+    const body = L('School / team name:\nNumber of seats:\nMonthly or yearly billing:\n', 'Nom de l’école ou de l’équipe :\nNombre de places :\nFacturation mensuelle ou annuelle :\n');
+    const mail = SITE.contactEmail;
+    const q = `subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    a.href = `mailto:${mail}?${q}`;
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const d = document.createElement('div');
+      d.className = 'contact-dlg';
+      d.innerHTML = `<div class="card" role="dialog" aria-modal="true">
+        <button class="x" aria-label="${L('Close', 'Fermer')}">×</button>
+        <h3>${L('Request a school offer', 'Demander une offre école')}</h3>
+        <p>${L('Email us with your school or team name, the number of seats and monthly or yearly billing:', 'Écrivez-nous avec le nom de votre école ou équipe, le nombre de places et la facturation souhaitée (mensuelle ou annuelle) :')}</p>
+        <div class="addr"><span>${mail}</span><button class="btn small" data-copy>${L('Copy', 'Copier')}</button></div>
+        <div class="row">
+          <a class="btn primary small" target="_blank" rel="noopener" href="https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(mail)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}">${L('Open in Gmail', 'Ouvrir dans Gmail')}</a>
+          <a class="btn small" href="mailto:${mail}?${q}">${L('Open email app', 'Ouvrir l’app e-mail')}</a>
+        </div></div>`;
+      const close = () => d.remove();
+      d.addEventListener('click', (ev) => { if (ev.target === d) close(); });
+      d.querySelector('.x').onclick = close;
+      document.addEventListener('keydown', function esc(ev) { if (ev.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } });
+      const cb = d.querySelector('[data-copy]');
+      cb.onclick = () => {
+        const done = () => { cb.textContent = L('Copied', 'Copié'); };
+        if (navigator.clipboard) navigator.clipboard.writeText(mail).then(done, () => {});
+      };
+      document.body.appendChild(d);
+    });
   });
 
   const y = document.getElementById('year');
