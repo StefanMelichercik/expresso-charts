@@ -6,11 +6,11 @@ const SITE = {
   sellerIds: 'IČO: 55115951, DIČ: 2121869244, IČ DPH: SK2121869244', // company IDs (+ register entry when known)
   contactEmail: 'support@expressocharts.com', // e.g. 'support@expressocharts.com'
 
-  // Lemon Squeezy checkout links (Store → Products → Share). Leave '' to show "Coming soon".
+  // Gumroad checkout links (one per membership tier). Leave '' to show "Coming soon".
   checkout: {
-    basic: '',
-    pro: '',
-    unlimited: ''
+    basic: 'https://melichercik.gumroad.com/l/expresso-charts?option=-xQHzdQeok4ny23HV_OYnQ%3D%3D&wanted=true',
+    pro: 'https://melichercik.gumroad.com/l/expresso-charts?option=tPQPKNJOib_V41Diph4VHA%3D%3D&wanted=true',
+    unlimited: 'https://melichercik.gumroad.com/l/expresso-charts?option=lsUTc-L0LYaH27MXR_W6vQ%3D%3D&wanted=true'
   },
 
   download: 'https://github.com/StefanMelichercik/expresso-charts-releases/releases/latest'
@@ -34,7 +34,7 @@ const SITE = {
     if (url) {
       anyCheckout = true;
       a.href = url;
-      a.classList.add('lemonsqueezy-button'); // opens Lemon Squeezy's checkout over the page
+      a.classList.add('gumroad-button'); // opens Gumroad's checkout over the page
     } else {
       a.removeAttribute('href');
       a.classList.add('disabled');
@@ -44,7 +44,7 @@ const SITE = {
   });
   if (anyCheckout) {
     const s = document.createElement('script');
-    s.src = 'https://app.lemonsqueezy.com/js/lemon.js';
+    s.src = 'https://gumroad.com/js/gumroad.js';
     s.defer = true;
     document.head.appendChild(s);
   }
