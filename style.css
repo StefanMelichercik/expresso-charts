@@ -179,3 +179,11 @@ ul.checks li::before { content: '✓'; position: absolute; left: 0; color: var(-
 
 /* Gumroad overlay CSS restyles .gumroad-button and redefines --accent on it; keep our gold primary buttons readable */
 a.btn.primary.gumroad-button, a.btn.primary.gumroad-button:hover { background: #e8b23a !important; color: #1a1405 !important; border-color: #e8b23a !important; } /* literal colours: Gumroad redefines --accent on the button */
+
+/* New product in the top menu */
+.nav a.nav-new { color: #00e5ff; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+.nav a.nav-new:hover { color: #7ff2ff; }
+.nav .tag { font-size: 10px; font-weight: 800; letter-spacing: .6px; color: #06121a; background: #00e5ff; border-radius: 99px; padding: 2px 7px; line-height: 1.3; box-shadow: 0 0 10px rgba(0,229,255,.45); }
+.nav a { white-space: nowrap; }
+@media (max-width: 1180px) and (min-width: 761px) { .nav { gap: 16px; } .nav a { font-size: 14px; } .nav a[href="#how"], .nav a[href="#fair"] { display: none; } }
+@media (max-width: 920px) and (min-width: 761px) { .nav a[href="#schools"], .nav a[href="#faq"] { display: none; } }
