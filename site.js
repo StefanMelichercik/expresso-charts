@@ -11,7 +11,7 @@ const SITE = {
     basic: 'https://melichercik.gumroad.com/l/expresso-charts?option=-xQHzdQeok4ny23HV_OYnQ%3D%3D&wanted=true',
     pro: 'https://melichercik.gumroad.com/l/expresso-charts?option=tPQPKNJOib_V41Diph4VHA%3D%3D&wanted=true',
     unlimited: 'https://melichercik.gumroad.com/l/expresso-charts?option=lsUTc-L0LYaH27MXR_W6vQ%3D%3D&wanted=true',
-    randomizer: '' // Poker Randomizer, one-time: set to 'https://melichercik.gumroad.com/l/poker-randomizer?wanted=true' once published
+    randomizer: 'https://melichercik.gumroad.com/l/poker-randomizer?wanted=true' // Poker Randomizer, one-time
   },
 
   download: 'https://github.com/StefanMelichercik/expresso-charts-releases/releases/latest'
