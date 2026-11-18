@@ -169,3 +169,13 @@ ul.checks li::before { content: '✓'; position: absolute; left: 0; color: var(-
 .contact-dlg .addr span { flex: 1; }
 .contact-dlg .row { display: flex; gap: 10px; flex-wrap: wrap; }
 .contact-dlg .x { position: absolute; top: 10px; right: 12px; background: none; border: 0; color: var(--muted); font-size: 22px; cursor: pointer; }
+
+/* Other tools */
+.tool { display: grid; grid-template-columns: 1.15fr 1fr; gap: 32px; align-items: center; padding: 26px; }
+.tool h3 { font-size: 26px; margin: 12px 0 8px; }
+.tool .tool-buy { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 22px; }
+.tool .amount { font-size: 34px; }
+@media (max-width: 960px) { .tool { grid-template-columns: 1fr; padding: 18px; } }
+
+/* Gumroad overlay CSS restyles .gumroad-button and redefines --accent on it; keep our gold primary buttons readable */
+a.btn.primary.gumroad-button, a.btn.primary.gumroad-button:hover { background: #e8b23a !important; color: #1a1405 !important; border-color: #e8b23a !important; } /* literal colours: Gumroad redefines --accent on the button */
